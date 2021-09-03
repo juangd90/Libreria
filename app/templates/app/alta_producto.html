@@ -1,0 +1,16 @@
+{% extends "app/base.html" %}
+{% load crispy_forms_tags %}
+<div class="container">
+{% block body %}
+<div class="col d-flex justify-content-center align-items-center ">
+	<form method="post" class="col-8" novalidate>
+		{% csrf_token %}
+    {{form | crispy}}
+	
+		
+	    <input type="submit" class="btn btn-info" value="Guardar">
+	</form>
+</div>
+
+{% endblock %}
+</div>

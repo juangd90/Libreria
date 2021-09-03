@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript">
+        function eliminar() {
+          var x = confirm("Eliminar Pedido ?");
+          if (x)
+            return true;
+          else
+            return false;
+        }
+        
+      </script>
+</head>
+<body>
+    {% extends "app/base.html" %}
+<h1>Productos cargados</h1>
+{% block body %}
+
+<div class="table-responsive">
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>        
+        <th scope="col">Precio de venta</th>        
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for p in object_list %}
+      <tr>
+        <th scope="row">{{p.id}}</th>
+        <td>{{p.nombre}}</td>      
+        <td>{{p.precio_venta}}</td>        
+        
+      </tr>
+      {% endfor %}
+    
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
+</body>
+</html>
