@@ -40,7 +40,7 @@ class VentaProducto(models.Model):
     cantidad=models.IntegerField(default=1)
 
     def CalcularVenta(self,cantidad,precio_venta,fecha):
-        self.ganancia+=precio_venta*cantidad
+        self.ganancia+=(precio_venta*cantidad)
         self.cantidad=cantidad
         self.fecha_venta=fecha
         self.save()

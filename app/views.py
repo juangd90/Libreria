@@ -67,11 +67,11 @@ def Venta(request):
    
     if request.method=='POST':
         productos=request.POST.get('respuesta')
-        cantidad=int (request.POST.get('cantidad'))
+        cantidad=int(request.POST.get('cantidad'))
         fecha=request.POST.get('fecha')
         #agregar un control, si el stock de algun producto es 0 no debe dejar seguir, y direccionar a otra pagina
         producto,created=Producto.objects.get_or_create(nombre=productos)
-        venta,created=VentaProducto.objects.get_or_create(producto=productos)
+        venta=VentaProducto(fecha_venta=fecha,producto=productos,ganancia=0,cantidad=cantidad)
         venta.CalcularVenta(cantidad,producto.precio_venta,fecha)
         producto.ActualizarStock(cantidad)
         ganancia=venta.ganancia
@@ -91,3 +91,5 @@ def Venta(request):
             
          
      })        
+
+    #hay que listar las ventas 
