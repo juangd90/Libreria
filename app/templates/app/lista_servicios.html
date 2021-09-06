@@ -35,7 +35,22 @@
       <tr>
         <th scope="row">{{p.id}}</th>
         <td>{{p.nombre}}</td>      
-        <td>{{p.precio_venta}}</td>        
+        <td>${{p.precio_venta}}</td> 
+        <td>
+          <form method="POST" action="eliminar/{{p.id}}">
+            {% csrf_token %}
+            <div class="btn-group">
+               
+            <a href="{% url 'editarservicio' p.id %}" title="Editar" type="button" class="btn btn-primary">Editar </a>
+            
+            <button class="btn btn-danger" onclick="return eliminar();" type="submit">
+                Eliminar
+              </button>
+            
+            </button>
+            </div>
+            </form>
+        </td>       
         
       </tr>
       {% endfor %}

@@ -5,13 +5,13 @@ from .models import Producto,Servicio,VentaProducto,VentaServicio
 
 
 class ProductoAdmin(admin.ModelAdmin):
-    list_display=("nombre","precio_costo","precio_venta","cantidad")
+    list_display=("nombre","precio_costo","fecha_compra","precio_venta","cantidad")
 
 class ServicioAdmin(admin.ModelAdmin):
     list_display=("nombre","precio_venta")
 
 class VentaProductoAdmin(admin.ModelAdmin):
-    list_display=("fecha","producto","ganancia","cantidad")
+    list_display=("producto","fecha_venta","ganancia","cantidad")
 
 class VentaServicioAdmin(admin.ModelAdmin):
     list_display=("fecha","servicio","ganancia","cantidad")        

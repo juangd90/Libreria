@@ -1,0 +1,17 @@
+{% extends "app/base.html" %}
+{% load crispy_forms_tags %}
+    
+{% block body %}
+<div class="container">
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+     {{ form.as_p }} 
+    
+   
+    <button type="submit" class="btn btn-primary">Aceptar</button>
+    <a href="../" type="submit" class="btn btn-primary">Volver</a>
+   
+  </form>
+</div>
+{% endblock %}

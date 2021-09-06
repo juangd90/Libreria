@@ -1,0 +1,31 @@
+{% extends "app/base.html" %}
+{% load crispy_forms_tags %}
+<div class="container">
+{% block body %}
+<div class="col d-flex justify-content-center align-items-center ">
+	<form method="post" class="col-8" novalidate>
+		{% csrf_token %}
+        <select name="respuesta">
+        {% for p in productos %}
+       
+            <option value="{{p.nombre}}">{{p.nombre}}</option>
+           
+         
+         
+	    {% endfor %}
+    </select>
+        <label for="cantidad">Cantidad vendida</label>
+          <input type="number" id="cantidad" name="cantidad">
+          <label for="start">Fecha de venta:</label>
+
+<input type="date" id="start" name="fecha"
+       value="2021-09-06"
+       min="2021-01-01" max="2021-12-31">
+		
+	    <input type="submit" class="btn btn-info" value="Enviar">
+    
+	</form>
+</div>
+
+{% endblock %}
+</div>

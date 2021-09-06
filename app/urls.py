@@ -24,5 +24,9 @@ urlpatterns = [
     path('crearservicio',views.AltaServicio.as_view(template_name="app/alta_servicio.html"),name="crearservicio"),
     path("listaproductos",views.ListaProductos.as_view(template_name="app/lista_productos.html"),name="listaproductos"),    
     path("listaservicios",views.ListaServicios.as_view(template_name="app/lista_servicios.html"),name="listaservicios"), 
+    path('editarproducto/<int:pk>',views.EditarProducto.as_view(template_name="app/editar_producto.html"),name="editarproducto"),
+    path('editarservicio/<int:pk>',views.EditarServicio.as_view(template_name="app/editar_servicios.html"),name="editarservicio"),
+    path("listaproductos/eliminar/<int:pk>",views.EliminarProducto.as_view(),name="eliminarproducto"),
+    path("ventaproducto/",views.Venta,name="venta")
     
 ]
