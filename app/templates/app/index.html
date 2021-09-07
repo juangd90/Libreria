@@ -1,12 +1,36 @@
 {% extends "app/base.html" %}
+{% load static %}
 {% block body %}
-<h2>Index</h2>
-<h3>Ganancia:</h3>
-{{ganancia}}
-<h3>Producto:</h3>
 
-{{productos}}
-<h3>Servicios:</h3>
-{{servicios}}
-{{fecha}}
-{% endblock %}
+
+
+<section class="about_section layout_padding mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7">
+          <div class="img-box">
+            <img src="{% static 'images/about-img.png' %}" alt="" />
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="detail-box">
+            <div class="custom_heading-container">
+              <h2>
+                Libreria DG
+              </h2>
+            </div>
+
+            <p>
+              
+              <p>Desde este sitio podran cargar nuevos productos y servicios, cargar las ventas realizadas y obtener estadisticas acerca de las ventas realizadas</p>
+              
+            </p>
+            <div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endblock %}

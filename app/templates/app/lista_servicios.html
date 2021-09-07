@@ -1,64 +1,72 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript">
-        function eliminar() {
-          var x = confirm("Eliminar Pedido ?");
-          if (x)
-            return true;
-          else
-            return false;
-        }
-        
-      </script>
-</head>
-<body>
-    {% extends "app/base.html" %}
-<h1>Productos cargados</h1>
+{% extends "app/base.html" %}
+{% load static %}
 {% block body %}
 
-<div class="table-responsive">
-<table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nombre</th>        
-        <th scope="col">Precio de venta</th>        
-        <th scope="col">Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-        {% for p in object_list %}
-      <tr>
-        <th scope="row">{{p.id}}</th>
-        <td>{{p.nombre}}</td>      
-        <td>${{p.precio_venta}}</td> 
-        <td>
-          <form method="POST" action="eliminar/{{p.id}}">
-            {% csrf_token %}
-            <div class="btn-group">
-               
-            <a href="{% url 'editarservicio' p.id %}" title="Editar" type="button" class="btn btn-primary">Editar </a>
+<section class="about_section layout_padding mt-5" style="padding-top: 5px;">
+  <div class="container">
+    <div class="row">
+      <h2>
+        Lista de servicios
+       </h2>
+      
+       <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>        
+                <th scope="col">Precio de venta</th>        
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for p in object_list %}
+              <tr>
+                <th scope="row">{{p.id}}</th>
+                <td>{{p.nombre}}</td>      
+                <td>${{p.precio_venta}}</td> 
+                <td>
+                  <form method="POST" action="eliminar/{{p.id}}">
+                    {% csrf_token %}
+                    <div class="btn-group">
+                       
+                    <a href="{% url 'editarservicio' p.id %}" title="Editar" type="button" class="btn btn-primary">Editar </a>
+                    
+                    <button class="btn btn-danger" onclick="return eliminar();" type="submit">
+                        Eliminar
+                      </button>
+                    
+                    </button>
+                    </div>
+                    </form>
+                </td>       
+                
+              </tr>
+              {% endfor %}
             
-            <button class="btn btn-danger" onclick="return eliminar();" type="submit">
-                Eliminar
-              </button>
+            </tbody>
+          </table>
+        </div>
+      
+      <div class="col-md-5">
+        <div class="detail-box">
+          <div class="custom_heading-container">
             
-            </button>
-            </div>
-            </form>
-        </td>       
-        
-      </tr>
-      {% endfor %}
-    
-    </tbody>
-  </table>
-</div>
+          </div>
 
+          <p>
+            
+            <p>
+     
+      </p>
+            
+          </p>
+          <div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock %}
-</body>
-</html>

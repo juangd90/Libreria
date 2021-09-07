@@ -1,46 +1,65 @@
 {% extends "app/base.html" %}
+{% load static %}
 {% load crispy_forms_tags %}
 <div class="container">
 {% block body %}
-<div class="col d-flex justify-content-center align-items-center ">
-	<form method="post" class="col-8" novalidate>
-		{% csrf_token %}
-        <select name="respuesta">
-        {% for s in servicios %}
-       
-            <option value="{{s.nombre}}">{{s.nombre}}</option>
-           
-         
-         
-	    {% endfor %}
-    </select>
-        <label for="cantidad">Cantidad vendida</label>
-          <input type="number" id="cantidad" name="cantidad">
-          <label for="start">Fecha de venta:</label>
 
-<input type="date" id="start" name="fecha"
-       value="2021-09-06"
-       min="2021-01-01" max="2021-12-31">
-		
-	    <input type="submit"  class="btn btn-info" value="Enviar">
-    
-	</form>
+
+
+
+
+
 </div>
-{% block script %}
-<script type="text/javascript">
-    function cargar() {
-      var x = confirm("Cargar venta?");
-      if (x){
-        alert("Venta cargada correctamente")
-        return true;
-      }
-      
-        
-      else
-        return false;
-    }
-    
-  </script>
+<section class="about_section layout_padding mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <div class="img-box">
+          <img src="{% static 'images/about-img.png' %}" alt="" />
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="detail-box">
+          <div class="custom_heading-container">
+            <h2>
+           Registrar venta de servicio
+            </h2>
+          </div>
+
+          <p>
+            <div class="col d-flex justify-content-center align-items-center ">
+            <form method="post" class="col-8" novalidate>
+              {% csrf_token %}
+              <strong>Servicio:</strong>  <br>
+                  <select name="respuesta" >
+                  {% for s in servicios %}
+                    
+                      <option value="{{s.nombre}}">{{s.nombre}}</option>
+                     
+                   
+                   
+                {% endfor %}
+              </select> <br>
+                  <label for="cantidad">Cantidad vendida:</label>
+                    <input type="number" id="cantidad" name="cantidad">
+                    <label for="start">Fecha de venta:</label>
+          
+          <input type="date" id="start" name="fecha"
+                 value="2021-09-06"
+                 min="2021-01-01" max="2021-12-31">
+              
+                <input type="submit"  class="btn btn-info" value="Enviar">
+              
+            </form>
+            </div>
+            
+          </p>
+          <div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock %}
-{% endblock %}
-</div>

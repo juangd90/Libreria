@@ -1,76 +1,83 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript">
-        function eliminar() {
-          var x = confirm("Eliminar Producto ?");
-          if (x)
-            return true;
-          else
-            return false;
-        }
-        
-      </script>
-</head>
-<body>
-    {% extends "app/base.html" %}
-<h1>Productos cargados</h1>
+{% extends "app/base.html" %}
+{% load static %}
 {% block body %}
+<section class="about_section layout_padding mt-5" style="padding-top: 5px;">
+  <div class="container">
+    <div class="row">
+      <h2>
+        Lista de productos
+       </h2>
+      
+        <div class="table-responsive">
+          <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Cantidad</th>
+                  <th scope="col">Precio de Costo</th>
+                  <th scope="col">Precio de venta</th>  
+                  <th scope="col">Fecha de compra</th>       
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for p in object_list %}
+                <tr>
+                  <th scope="row">{{p.id}}</th>
+                  <td>{{p.nombre}}</td>
+                  {% if p.cantidad < 3 %}
+                  <td style="color: red; font-weight: bold; ">{{p.cantidad}}</td>
+                  {% else %}
+                  <td>{{p.cantidad}}</td>
+                  {% endif %}
+                 
+                  <td>${{p.precio_costo}}</td>
+                  <td>${{p.precio_venta}}</td>
+                  <td>{{p.fecha_compra}}</td>   
+                  <td>
+                    <form method="POST" action="listaproductos/eliminar/{{p.id}}">
+                      {% csrf_token %}
+                      <div class="btn-group">
+                         
+                      <a href="{% url 'editarproducto' p.id %}" title="Editar" type="button" class="btn btn-primary">Editar </a>
+                      
+                      <button class="btn btn-danger" onclick="return eliminar();" type="submit">
+                          Eliminar
+                        </button>
+                      
+                      </button>
+                      </div>
+                      </form>
+                  </td>     
+                  
+                </tr>
+                {% endfor %}
+              
+              </tbody>
+            </table>
+          </div>
+      
+      <div class="col-md-5">
+        <div class="detail-box">
+          <div class="custom_heading-container">
+            
+          </div>
 
-<div class="table-responsive">
-<table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Cantidad</th>
-        <th scope="col">Precio de Costo</th>
-        <th scope="col">Precio de venta</th>  
-        <th scope="col">Fecha de compra</th>       
-        <th scope="col">Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-        {% for p in object_list %}
-      <tr>
-        <th scope="row">{{p.id}}</th>
-        <td>{{p.nombre}}</td>
-        {% if p.cantidad < 3 %}
-        <td style="color: red; font-weight: bold; ">{{p.cantidad}}</td>
-        {% else %}
-        <td>{{p.cantidad}}</td>
-        {% endif %}
-       
-        <td>${{p.precio_costo}}</td>
-        <td>${{p.precio_venta}}</td>
-        <td>{{p.fecha_compra}}</td>   
-        <td>
-          <form method="POST" action="listaproductos/eliminar/{{p.id}}">
-            {% csrf_token %}
-            <div class="btn-group">
-               
-            <a href="{% url 'editarproducto' p.id %}" title="Editar" type="button" class="btn btn-primary">Editar </a>
+          <p>
             
-            <button class="btn btn-danger" onclick="return eliminar();" type="submit">
-                Eliminar
-              </button>
+            <p>
+     
+      </p>
             
-            </button>
-            </div>
-            </form>
-        </td>     
-        
-      </tr>
-      {% endfor %}
-    
-    </tbody>
-  </table>
-</div>
+          </p>
+          <div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 {% endblock %}
-</body>
-</html>
-
