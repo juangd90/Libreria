@@ -27,6 +27,9 @@ urlpatterns = [
     path('editarproducto/<int:pk>',views.EditarProducto.as_view(template_name="app/editar_producto.html"),name="editarproducto"),
     path('editarservicio/<int:pk>',views.EditarServicio.as_view(template_name="app/editar_servicios.html"),name="editarservicio"),
     path("listaproductos/eliminar/<int:pk>",views.EliminarProducto.as_view(),name="eliminarproducto"),
-    path("ventaproducto/",views.Venta,name="venta")
+    path("ventaproducto/",views.Venta,name="venta"),
+    path("lista_ventas",views.ReporteProductos,name="lista_ventas"),
+    path("ventaservicios/",views.VentaSer,name="ventaservicios"),
+    path("lista_ventas_ser",views.ReporteServicios,name="lista_ventas_ser")
     
 ]

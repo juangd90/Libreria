@@ -6,9 +6,9 @@
 	<form method="post" class="col-8" novalidate>
 		{% csrf_token %}
         <select name="respuesta">
-        {% for p in productos %}
+        {% for s in servicios %}
        
-            <option value="{{p.nombre}}">{{p.nombre}}</option>
+            <option value="{{s.nombre}}">{{s.nombre}}</option>
            
          
          
@@ -22,7 +22,7 @@
        value="2021-09-06"
        min="2021-01-01" max="2021-12-31">
 		
-	    <input type="submit" onclick="return cargar();" class="btn btn-info" value="Enviar">
+	    <input type="submit"  class="btn btn-info" value="Enviar">
     
 	</form>
 </div>

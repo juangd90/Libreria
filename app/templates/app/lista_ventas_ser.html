@@ -1,0 +1,41 @@
+{% extends "app/base.html" %}
+
+{% block body %}
+
+	
+	<h2 class="text-center my-4"> 
+		<span class="badge badge-info">
+
+			
+			
+		</span>
+	</h2>
+
+
+	<table class="table table-striped table-bodered">
+		<thead>
+			<tr style="align-items: center;">
+				<th>Servicio</th>
+				<th>Fecha de venta</th>
+				<th>Ganancia</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+            
+			{% for ventas in total_ventas %}
+				<tr>
+					<th>{{ventas.servicio}}</th>
+					<th>{{ventas.fecha_venta}}</th>
+					<th>${{ventas.ganancia}}</th>
+					
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	
+	
+
+	
+{% endblock %}

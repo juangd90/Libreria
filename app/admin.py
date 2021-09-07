@@ -14,7 +14,7 @@ class VentaProductoAdmin(admin.ModelAdmin):
     list_display=("producto","fecha_venta","ganancia","cantidad")
 
 class VentaServicioAdmin(admin.ModelAdmin):
-    list_display=("fecha","servicio","ganancia","cantidad")        
+    list_display=("servicio","fecha_venta","ganancia","cantidad")        
 
 admin.site.register(Producto,ProductoAdmin)    
 admin.site.register(Servicio,ServicioAdmin)

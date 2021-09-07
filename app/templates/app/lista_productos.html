@@ -28,7 +28,8 @@
         <th scope="col">Nombre</th>
         <th scope="col">Cantidad</th>
         <th scope="col">Precio de Costo</th>
-        <th scope="col">Precio de venta</th>        
+        <th scope="col">Precio de venta</th>  
+        <th scope="col">Fecha de compra</th>       
         <th scope="col">Acciones</th>
       </tr>
     </thead>
@@ -37,9 +38,15 @@
       <tr>
         <th scope="row">{{p.id}}</th>
         <td>{{p.nombre}}</td>
+        {% if p.cantidad < 3 %}
+        <td style="color: red; font-weight: bold; ">{{p.cantidad}}</td>
+        {% else %}
         <td>{{p.cantidad}}</td>
+        {% endif %}
+       
         <td>${{p.precio_costo}}</td>
-        <td>${{p.precio_venta}}</td>   
+        <td>${{p.precio_venta}}</td>
+        <td>{{p.fecha_compra}}</td>   
         <td>
           <form method="POST" action="listaproductos/eliminar/{{p.id}}">
             {% csrf_token %}
