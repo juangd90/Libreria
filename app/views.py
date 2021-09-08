@@ -23,7 +23,7 @@ class AltaProducto(LoginRequiredMixin,CreateView):
     success_url= reverse_lazy('index')
 
 class AltaServicio(LoginRequiredMixin,CreateView):
-      #login_url='login'
+    login_url='login'
     model=Servicio
     form=Servicio
     fields="__all__"
@@ -33,15 +33,18 @@ class AltaServicio(LoginRequiredMixin,CreateView):
 
 #todas listas
 class ListaProductos(LoginRequiredMixin,ListView):
+    login_url='login'
     model=Producto
     template_name="app/lista_productos.html"
 
 class ListaServicios(LoginRequiredMixin,ListView):
+    login_url='login'
     model=Servicio
     template_name="app/lista_servicios.html"
 
 #todas edicion
 class EditarProducto(LoginRequiredMixin,UpdateView):
+    login_url='login'
     model=Producto
     form=Producto
     fields="__all__"
@@ -49,6 +52,7 @@ class EditarProducto(LoginRequiredMixin,UpdateView):
     success_url=reverse_lazy('listaproductos')
 
 class EditarServicio(LoginRequiredMixin,UpdateView):
+    login_url='login'
     model=Servicio
     form=Servicio
     fields="__all__"
@@ -57,6 +61,7 @@ class EditarServicio(LoginRequiredMixin,UpdateView):
 
 #todas eliminar
 class EliminarProducto(LoginRequiredMixin,DeleteView):
+    login_url='login'
     model=Producto
     form=Producto
     fields="__all__"
