@@ -30,6 +30,8 @@ urlpatterns = [
     path("ventaproducto/",views.Venta,name="venta"),
     path("lista_ventas",views.ReporteProductos,name="lista_ventas"),
     path("ventaservicios/",views.VentaSer,name="ventaservicios"),
-    path("lista_ventas_ser",views.ReporteServicios,name="lista_ventas_ser")
+    path("lista_ventas_ser",views.ReporteServicios,name="lista_ventas_ser"),
+    path("logout",views.logout_user,name="logout"),
+    path("login",views.login_user,name="login")
     
 ]

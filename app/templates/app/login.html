@@ -21,11 +21,18 @@
             </div>
 
             <p>
-              
-              <p>Desde este sitio podran cargar nuevos productos y servicios, cargar las ventas realizadas y obtener estadisticas acerca de las ventas realizadas</p>
-              {% for message in messages %}
-              <li style="color: red; border: dashed black;">{{ message }}</li>
-              {% endfor %}
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <label for="username">Usuario</label>
+                    <p><i class="fa fa-user" aria-hidden="true"></i>
+                        <input type="text" name="username"></p>
+                    <label for="password">Contraseña</label> 
+                    <p><i class="fa fa-key" aria-hidden="true"></i>
+                        <input type="password" name="password"  ></p>
+                      <input class="btn btn-primary" type="submit" value="Ingresar">
+                    
+                </form>
+             
             </p>
             <div>
               

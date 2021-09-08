@@ -117,8 +117,3 @@
     }
 }
 
-@media (min-width: 992px) {
-    .navbar-expand-lg .navbar-collapse {
-        display: none !important;
-    }
-}
