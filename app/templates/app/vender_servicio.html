@@ -1,4 +1,26 @@
-{% extends "app/base.html" %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript">
+    
+    function cargar(){
+      var cantidad=document.getElementById("cantidad").value
+      var fecha=document.getElementById("start").value
+      if(cantidad=='' || fecha ==''){
+        console.log("asdasdas")
+        alert("Error!! Verificar fecha o cantidad ingresada")
+        return false
+      } 
+      else return true
+    }
+    
+  </script>
+</head>
+<body>
+  {% extends "app/base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
 <div class="container">
@@ -39,16 +61,16 @@
                    
                    
                 {% endfor %}
-              </select> <br>
-                  <label for="cantidad">Cantidad vendida:</label>
-                    <input type="number" id="cantidad" name="cantidad">
+              </select> 
+                  <label for="cantidad">Cantidad vendida:</label> <br>
+                    <input type="number" id="cantidad" name="cantidad" min="1" max="20"> <br>
                     <label for="start">Fecha de venta:</label>
           
           <input type="date" id="start" name="fecha"
-                 value="2021-09-06"
+                 
                  min="2021-01-01" max="2021-12-31">
               
-                <input type="submit"  class="btn btn-info" value="Enviar">
+                <input type="submit" onclick="return cargar();" class="btn btn-info" value="Enviar">
               
             </form>
             </div>
@@ -63,3 +85,5 @@
   </div>
 </section>
 {% endblock %}
+</body>
+</html>

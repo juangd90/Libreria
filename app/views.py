@@ -1,11 +1,12 @@
 from django.db import models
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.regex_helper import normalize
 from django.views.generic import ListView, DetailView, CreateView
 from django.views.generic.edit import DeleteView, UpdateView 
 from .models import Producto,Servicio,VentaProducto,VentaServicio
 from django.urls.base import reverse_lazy
+from django.contrib import messages
 # Create your views here.
 
 def index(request):
@@ -64,15 +65,23 @@ class EliminarProducto(DeleteView):
 def Venta(request):   
       
     if request.method=='POST':
+        #traigo la info desde el front y con esa info busco el producto
+        #con la info que traigo, genero la instancia de VentaProducto y
+        #llamo al metodo para calcular la ganancia
         productos=request.POST.get('respuesta')
         cantidad=int(request.POST.get('cantidad'))
         fecha=request.POST.get('fecha')
         #agregar un control, si el stock de algun producto es 0 no debe dejar seguir, y direccionar a otra pagina
         producto,created=Producto.objects.get_or_create(nombre=productos)
+        if producto.cantidad<cantidad:
+            messages.error(request,"Error! Verifique el stock del producto")
+            return render(request,'app/index.html',{
+                
+            })
         venta=VentaProducto(fecha_venta=fecha,producto=productos,ganancia=0,cantidad=cantidad)
         venta.CalcularVenta(cantidad,producto.precio_venta,fecha)
         producto.ActualizarStock(cantidad)
-       
+       #genero el listado de todas las ventas cargadas para mostrar luego de registrar la venta
         total_ventas=VentaProducto.objects.order_by('fecha_venta')
         return render(request,"app/lista_ventas_prod.html",{
          'total_ventas':total_ventas

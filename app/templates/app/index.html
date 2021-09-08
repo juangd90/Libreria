@@ -23,7 +23,9 @@
             <p>
               
               <p>Desde este sitio podran cargar nuevos productos y servicios, cargar las ventas realizadas y obtener estadisticas acerca de las ventas realizadas</p>
-              
+              {% for message in messages %}
+              <li style="color: red; border: dashed black;">{{ message }}</li>
+              {% endfor %}
             </p>
             <div>
               

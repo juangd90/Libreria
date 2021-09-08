@@ -13,7 +13,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Libreria DG</title>
+  <title>Libreria FG</title>
 
   <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
@@ -37,10 +37,10 @@
     <header class="header_section">
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
-          <a class="navbar-brand" href="index.html">
-            <img src="images/logo.png" alt="" />
+          <a class="navbar-brand" href="{% url 'index' %}">
+            <img src="{% static 'images/logo.png' %}" alt="" />
             <span>
-              Libreria DG
+              Libreria FG
             </span>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,28 +49,52 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto mr-2">
-              <li class="nav-item active">
-                <a class="nav-link" href="{% url 'index' %}"> Inicio <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about.html">Productos </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="portfolio.html">Servicios </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="service.html">Ventas</a>
-              </li>
-
+             
+              <div class="dropdown">
+                <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Productos
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="{% url 'crearproducto' %}">Crear producto</a>
+                  <a class="dropdown-item" href="{% url 'listaproductos' %}">Lista de productos</a>
+                 
+                </div>
+              </div>
+              <div class="dropdown">
+                <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Servicios
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="{% url 'crearservicio' %}">Crear servicio</a>
+                  <a class="dropdown-item" href="{% url 'listaservicios' %}">Lista de servicios</a>
+                 
+                </div>
+              </div>
+              <div class="dropdown">
+                <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Ventas
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="{% url 'venta' %}">Venta de producto</a>
+                  <a class="dropdown-item" href="{% url 'ventaservicios' %}">Venta de servicio</a>
+                 
+                </div>
+              </div>
+              <div class="dropdown">
+                <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Informes
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="{% url 'lista_ventas' %}">Productos</a>
+                  <a class="dropdown-item" href="{% url 'lista_ventas_ser' %}">Servicios</a>
+                 
+                </div>
+              </div>
             
             </ul>
          
           </div>
-          <div class="call_btn">
-            <a href="">
-              Call: +01234567890
-            </a>
-          </div>
+         
         </nav>
       </div>
     </header>
@@ -99,101 +123,60 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-lg-3">
-          <div class="info_links pl-lg-5">
-            <h4>
-              Menu
-            </h4>
-            <ul>
-              <li>
-                <a href="index.html">
-                  Home
-                </a>
-              </li>
-              <li class="active">
-                <a href="about.html">
-                  About
-                </a>
-              </li>
-              <li>
-                <a class="" href="portfolio.html">Portfolio </a>
-              </li>
-              <li>
-                <a class="" href="service.html">Services</a>
-              </li>
-              <li>
-                <a href="contact.html">
-                  Contact Us
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
           <div class="info_contact">
             <h4>
-              Location
+              Dirección
             </h4>
             <div>
-              <img src="images/location.png" alt="" />
+              <img src="{% static 'images/location.png' %}" alt="" />
               <p>
-                104 loram ipusm
+              Cuberli 546
               </p>
             </div>
             <div>
-              <img src="images/telephone.png" alt="" />
+              <img src="{% static 'images/telephone.png' %}" alt="" />
               <p>
-                ( +01 1234567890 )
+                <a href="https://wa.me/3624301312" target="blank" style="color: white;">3624301312</a>
               </p>
             </div>
             <div>
-              <img src="images/envelope.png" alt="" />
+              <img src="{% static 'images/envelope.png' %}" alt="" />
               <p>
                 demo@gmail.com
               </p>
             </div>
           </div>
         </div>
+        <div class="col-md-6 col-lg-3">
+          
+        </div>
 
         <div class="col-md-6 col-lg-3">
-          <div class="info_social">
-            <h4>
-              Social Link
-            </h4>
-            <div class="social_container">
-              <div>
-                <a href="">
-                  <img src="images/facebook-logo.png" alt="" />
-                </a>
-              </div>
-              <div>
-                <a href="">
-                  <img src="images/twitter-logo.png" alt="" />
-                </a>
-              </div>
-              <div>
-                <a href="">
-                  <img src="images/instagram.png" alt="" />
-                </a>
-              </div>
-              <div>
-                <a href="">
-                  <img src="images/linkedin-sign.png" alt="" />
-                </a>
-              </div>
-            </div>
-          </div>
+        
         </div>
         <div class="col-md-6 col-lg-3">
           <div class="info_form">
-            <h4>
-              Newsletter
-            </h4>
-            <form action="#">
-              <input type="text" placeholder="Enter Your Email" />
-              <button type="submit">
-                Subscribe
-              </button>
-            </form>
+            <div class="info_social">
+              <h4>
+                Redes sociales
+              </h4>
+              <div class="social_container">
+                <div>
+                  <a href="">
+                    <img src="{% static 'images/facebook-logo.png' %}" alt="" />
+                  </a>
+                </div>
+                <div>
+                 
+                </div>
+                <div>
+                  <a href="">
+                    <img src="{% static 'images/instagram.png' %}" alt="" />
+                  </a>
+                </div>
+                
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -205,8 +188,8 @@
   <!-- footer section -->
   <footer class="container-fluid footer_section">
     <p>
-      &copy; 2019 All Rights Reserved By
-      <a href="https://html.design/">Free Html Templates</a>
+      &copy; 2021 Libreria FG
+      
     </p>
   </footer>
   <!-- footer section -->
@@ -215,6 +198,7 @@
   <script src="{% static 'js/bootstrap.js' %}"></script>
   <script src="{% static 'js/circles.min.js' %}"></script>
   <script src="{% static 'js/custom.js' %}"></script>
+  
 
 </body>
 
