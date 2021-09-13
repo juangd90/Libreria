@@ -126,9 +126,11 @@ def VentaSer(request):
               'total_ventas':total_ventas   
         })
     else:
-        servicios=Servicio.objects.all()            
+        servicios=Servicio.objects.all()
+        prueba='2021-09-14'           
         return render(request,"app/vender_servicio.html",{
             'servicios':servicios,
+            'prueba':prueba,
             })  
 
 @login_required(login_url='login')
