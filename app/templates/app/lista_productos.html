@@ -3,7 +3,7 @@
 {% block body %}
 <section class="about_section layout_padding mt-5" style="padding-top: 5px;">
   <div class="container">
-    <div class="row">
+    
       <h2>
         Lista de productos
        </h2>
@@ -40,8 +40,8 @@
                       {% csrf_token %}
                       <div class="btn-group">
                          
-                      <a href="{% url 'editarproducto' p.id %}" title="Editar" type="button" class="btn btn-primary">Editar </a>
-                      
+                      <a href="{% url 'editarproducto' p.id %}" title="Editar" type="button" class="btn btn-primary">Editar </a> 
+                      <hr>
                       <button class="btn btn-danger" onclick="return eliminar();" type="submit">
                           Eliminar
                         </button>
@@ -76,7 +76,7 @@
           </div>
         </div>
       </div>
-    </div>
+    
   </div>
 </section>
 
